@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Search</title>
+</head>
+<body>
+    <h1>Property Search</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="unit_type">Unit Type:</label>
+        <select id="unit_type" name="unit_type">
+            <option value="1BHK">1BHK</option>
+            <option value="2BHK">2BHK</option>
+            <option value="3BHK">3BHK</option>
+            <option value="4BHK">4BHK</option>
+        </select>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+
+        <button type="submit">Search</button>
+    </form>
+
+    {% if units %}
+        <h2>Search Results:</h2>
+        <ul>
+            {% for unit in units %}
+                <li>{{ unit.property.name }} - {{ unit.get_unit_type_display }} - Rent: {{ unit.rent_cost }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
+

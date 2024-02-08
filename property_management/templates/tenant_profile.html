@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ tenant.user_profile.user.email }} Profile</title>
+</head>
+<body>
+    <h1>{{ tenant.user_profile.user.email }} Profile</h1>
+    
+    <h2>Personal Information:</h2>
+    <p>Name: {{ tenant.user_profile.user.get_full_name }}</p>
+    <p>Email: {{ tenant.user_profile.user.email }}</p>
+    <p>Address: {{ tenant.user_profile.address }}</p>
+    <p>Document Proofs: {{ tenant.user_profile.document_proofs }}</p>
+
+    <h2>Rental Information:</h2>
+    <p>Unit: {{ tenant.unit.property.name }} - {{ tenant.unit.get_unit_type_display }} - Rent: {{ tenant.unit.rent_cost }}</p>
+    <p>Agreement End Date: {{ tenant.agreement_end_date }}</p>
+    <p>Monthly Rent Date: {{ tenant.monthly_rent_date }}</p>
+</body>
+</html>
